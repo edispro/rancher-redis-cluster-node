@@ -9,7 +9,7 @@ RUN apt-get update \
   && update-ca-certificates \
   && mkdir -p /usr/local/etc/redis \
   && cd /usr/local/etc/redis \
-  && wget http://download.redis.io/redis-stable/redis.conf \
+  && wget https://raw.githubusercontent.com/antirez/redis/4.0/redis.conf \
   && chown redis:redis /usr/local/etc/redis/redis.conf \
   && wget https://github.com/rancher/giddyup/releases/download/v${GIDDYUP_VERSION}/giddyup -P /usr/local/bin \
   && chmod +x /usr/local/bin/giddyup
