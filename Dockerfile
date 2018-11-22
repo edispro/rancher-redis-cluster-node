@@ -18,7 +18,8 @@ RUN rm -rf ~/* \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD docker-entrypoint.sh /
-
+RUN chown root:root /docker-entrypoint.sh
+RUN chmod 4755 /docker-entrypoint.sh
 WORKDIR /data
 
 EXPOSE 6379 16379 26379
