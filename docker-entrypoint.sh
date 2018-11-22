@@ -29,5 +29,7 @@ else
   port=`echo -n $(grep -E "^ *port +.*$" /usr/local/etc/redis/redis.conf | sed -E "s/^ *port +(.*)$/\1/g")`
   sed -i -E "s/^.*slaveof +.*$/slaveof $master_ip $port/g" /usr/local/etc/redis/redis.conf
 fi
-echo 'requirepass ${REDIS_PASSWORD}' >>/usr/local/etc/redis/redis.conf
+
+echo 'masterauth ' ${REDIS_PASSWORD} >>/usr/local/etc/redis/redis.conf
+echo 'requirepass ' ${REDIS_PASSWORD} >>/usr/local/etc/redis/redis.conf
 exec docker-entrypoint.sh "$@"
