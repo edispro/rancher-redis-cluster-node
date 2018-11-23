@@ -30,5 +30,5 @@ else
   sed -i -E "s/^.*slaveof +.*$/slaveof $master_ip $port/g" /usr/local/etc/redis/redis.conf
 fi
   sed -i -E "s/^.*masterauth +.*$/masterauth $REDIS_PASSWORD/g" /usr/local/etc/redis/redis.conf
-  sed -i -E "s/^.*requirepass +.*$/masterauth $REDIS_PASSWORD/g" /usr/local/etc/redis/redis.conf
+  sed -i -E "s/^.*requirepass +.*$/requirepass $REDIS_PASSWORD/g" /usr/local/etc/redis/redis.conf
 exec docker-entrypoint.sh "$@"
